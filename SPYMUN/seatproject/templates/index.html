@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Booking</title>
+    <style>
+        .seat {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+        }
+        .booked {
+            background-color: #f00; /* Red color for booked seats */
+        }
+        .selected {
+            background-color: #00f; /* Blue color for selected seats */
+        }
+    </style>
+</head>
+<body>
+    <h1>Bus Booking</h1>
+    <form id="bookingForm" action="/book_seat" method="post">
+        <div id="seats">
+            <!-- This will be dynamically populated with seat status from MySQL -->
+        </div>
+        <br><br>
+        <input type="hidden" id="selectedSeat" name="seat" value="">
+        <input type="submit" value="Book Seat">
+    </form>
+
+    <script>
+        window.onload = function() {
+            // Fetch seat status from MySQL and update the UI
+            fetch('/get_seat_status')
+                .then(response => response.json())
+                .then(seats => {
+                    const seatsDiv = document.getElementById('seats');
+                    seats.forEach(seat => {
+                        const seatDiv = document.createElement('div');
+                        seatDiv.className = 'seat';
+                        seatDiv.textContent = seat.seatno;
+                        if (seat.status === 1) {
+                            seatDiv.classList.add('booked');
+                        }
+                        seatDiv.onclick = function() {
+                            selectSeat(seatDiv);
+                        };
+                        seatsDiv.appendChild(seatDiv);
+                    });
+                });
+        };
+
+        function selectSeat(seat) {
+            var selectedSeat = document.getElementById('selectedSeat');
+            if (seat.classList.contains('booked')) {
+                alert('This seat is already booked!');
+            } else {
+                // Reset style for previously selected seat
+                var previouslySelectedSeat = document.querySelector('.selected');
+                if (previouslySelectedSeat) {
+                    previouslySelectedSeat.classList.remove('selected');
+                }
+                // Set style for the newly selected seat
+                seat.classList.add('selected');
+                // Update the selected seat value in the form
+                selectedSeat.value = seat.textContent;
+            }
+        }
+    </script>
+</body>
+</html>

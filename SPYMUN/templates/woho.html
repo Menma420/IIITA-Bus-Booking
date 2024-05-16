@@ -1,0 +1,237 @@
+<!-- <?php
+session_start();
+
+// Check if ticket ID is provided in the URL
+if (!isset($_GET['ticket_id'])) {
+    // If ticket ID is not provided, redirect to the homepage
+    header("Location: index.php");
+    exit();
+}
+
+// Get the ticket ID from the URL
+$ticketID = $_GET['ticket_id'];
+?> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Complaint Confirmation</title>
+
+    <style>
+      body {
+        background-color: #b7d0f7;
+        font-family: "Candara";
+        color: #333333;
+      }
+
+      h1 {
+        font-size: 4vmax;
+        text-align: center;
+        color: #fff;
+      }
+
+      h2 {
+        font-size: 1.5vmax;
+        text-align: center;
+        color: #333333;
+      }
+
+      .ticket {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 700px;
+        margin: 20px auto;
+
+        .stub,
+        .check {
+          box-sizing: border-box;
+        }
+      }
+
+      .stub {
+        background: rgb(86 10 114);
+        background-image: url('static/images/tkt.png'); /* Adjust the path as needed */
+        background-size: cover; /* Ensure the image covers the div */
+        width: 150px; /* Set the width of the div */
+        height: 150px;
+        height: 250px;
+        width: 250px;
+        color: white;
+        padding: 20px;
+        position: relative;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          border-top: 20px solid #b7d0f7;
+          border-left: 20px solid rgb(86 10 114);
+          width: 0;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          border-bottom: 20px solid #b7d0f7;
+          border-left: 20px solid rgb(86 10 114);
+          width: 0;
+        }
+
+        .top {
+          display: flex;
+          align-items: center;
+          height: 40px;
+          text-transform: uppercase;
+
+          .line {
+            display: block;
+            background: #fff;
+            height: 40px;
+            width: 3px;
+            margin: 0 20px;
+          }
+          .num {
+            font-size: 10px;
+            span {
+              color: #000;
+            }
+          }
+        }
+        .number {
+          position: absolute;
+          left: 40px;
+          font-size: 150px;
+        }
+        .invite {
+          position: absolute;
+          left: 150px;
+          bottom: 45px;
+          color: #000;
+          width: 20%;
+
+          &:before {
+            content: "";
+            background: #fff;
+            display: block;
+            width: 40px;
+            height: 3px;
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      .check {
+        background: #fff;
+        height: 250px;
+        width: 450px;
+        padding: 40px;
+        position: relative;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-top: 20px solid #b7d0f7;
+          border-right: 20px solid #fff;
+          width: 0;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          border-bottom: 20px solid #b7d0f7;
+          border-right: 20px solid #fff;
+          width: 0;
+        }
+
+        .big {
+          font-size: 80px;
+          font-weight: 900;
+          line-height: 0.8em;
+        }
+        .number {
+          position: absolute;
+          top: 50px;
+          right: 50px;
+          color: #ef5658;
+          font-size: 40px;
+        }
+        .info {
+          display: flex;
+          justify-content: flex-start;
+
+          font-size: 16px;
+          margin-top: 20px;
+          width: 100%;
+
+          section {
+            margin-right: 50px;
+            &:before {
+              content: "";
+              background: #ef5658;
+              display: block;
+              width: 40px;
+              height: 3px;
+              margin-bottom: 5px;
+            }
+            .title {
+              font-size: 10px;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+
+      a{
+        position: relative;
+        top: 50%;
+        left: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="\logout">Logout</a>
+
+    <div class="ticket">
+      <div class="stub">
+        <div class="number"></div>
+      </div>
+      <div class="check">
+        <div class="big">Ticket ID</div>
+
+        <div class="info">
+          <section>
+            <div class="title">Seat no</div>
+            <div>{{ seatno }}</div>
+          </section>
+          <section>
+            <div class="title">Issued By</div>
+            <div>{{ enroll }}</div>
+          </section>
+          <section>
+            <div class="title">Date</div>
+            <div id="date"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <script>
+      let d = new Date();
+      const dateElement = document.querySelector("#date");
+
+      const day = d.getDate();
+      const month = d.getMonth() + 1;
+
+      const formattedDate = `${day}/${month}/${d.getFullYear()}`;
+
+      dateElement.textContent = formattedDate;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Booking Service</title>
+    <style>
+    
+
+    header img{
+       height: 100px;
+       width: 17%;
+       position: absolute;
+    }
+
+      /* Styling for the footer */
+      footer {
+        background: rgba(44, 62, 80, 0.8);
+        color: #ECF0F1;
+        font-size: 12px;
+        padding: 2px 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .footer-content {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+      }
+
+      .footer-section {
+        flex: 1;
+        text-align: center;
+      }
+
+      .footer-section p {
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+      }
+
+      /* body css */
+
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-image: url(../static/images/bg1.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        overflow: hidden;
+      }
+
+      /* .container {
+        display: flex;
+        position: relative;
+        top: 55px;
+        left:50px;
+        height: 540px;
+        justify-content: space-around;
+      } */
+
+      /* .partb{
+        display: flex;
+        flex-wrap: wrap;
+        position: relative;
+        top: 10px;
+        bottom: 20px;
+        width: 40%;
+        /* background-color: rgba(255, 255, 255, 0.8); */
+       /* opacity: 1;
+        border-radius: 20px;
+        /* box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+         }
+       */
+        
+      .a{
+        text-align: center;
+        align-items: center;
+      }
+
+      .b {
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        width: 45%;
+        border-radius: 10px;
+        border: 0;
+        box-shadow: 2px 2px 2px #999;
+        /* background-color: #F2CE16; */
+        color: black;
+        /* transition: background-color 0.3s, box-shadow 0.3s; */
+      }
+      
+      button:hover {
+            background-color: #2980b9; /* Change the background color on hover */
+            box-shadow: 6px 6px 6px #999;
+            cursor: pointer;
+      }
+      .parta{
+          display: flex;
+          position: relative;
+          top:24rem;
+          left:54rem;
+        }
+      .partb{
+        display: flex;
+        position: relative;
+        top:26rem;
+        left:54rem;
+      }
+
+      .morn {
+        width:280px;
+        background-image: url(../static/images/mng1.jpg);
+        background-size: cover;
+      }
+
+      .eve {
+        width: 280px;
+        margin-left:10px;
+        background-image: url(../static/images/eve.png);
+        background-size: cover;
+      }
+
+
+
+      /* Date button css */
+
+  
+.radio-container{
+  margin-left: 10px;
+  width:30%;
+  display:flex;
+  background-color:#f876202c;
+  padding-top:20px;
+  padding-bottom: 18px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 10px;
+  /* border: 1PX solid gray; */
+  box-shadow: 2px 2px rgb(117, 117, 117);
+
+}
+.radio-container input[type="radio"] {
+    display:none; 
+}
+.radio-opt label:hover{
+  cursor: pointer;
+  transition: .3s all ease-in-out;
+  background-color:#f8762079;
+}
+#dateID{
+  color: #fff;
+  padding:15px 20px;
+  font-size: 25px;
+  font-weight: 600;
+  background-color:#f87620;
+  border-radius: 10px;
+}
+.radio-opt label{
+font-size: 18px;
+margin-left: 5px;
+padding: 8px 13px;
+border-radius: 10px;
+}
+.radio-container input[type="radio"]:checked + label {
+  transition:.3s all ease-in-out;
+  padding:10px 15px;
+  background-color:#f87620; 
+  /* background-color: #7c1e1f; */
+  border-radius: 10px;
+  text-align: center;
+  color:#fff; 
+}
+    </style>
+  </head>
+<body>
+  <header>
+     <img src="../static/images/logosh1.png" alt="logo">
+  </header>
+  <form action="/booking" method="post">
+    <div class="container">
+      
+      <div class="parta">
+        <label id="dateID" for="Date">Date</label>
+        <div class="radio-container">
+          <div class="radio-opt">
+            <input id="curr" name="date" type="radio" value="0" checked>
+            <label for="curr" class="curr"></label>
+          </div>
+            <div class="radio-opt">
+            <input id="curr1" name="date" type="radio" value="1">
+            <label for="curr1" class="curr1"></label>
+            </div>
+            
+            <div class="radio-opt">
+              <input id="curr2" name="date" type="radio" value="2">
+              <label for="curr2" class="curr2"></label>
+            </div>
+           
+            <div class="radio-opt">
+              <input id="curr3" name="date" type="radio" value="3">
+            <label for="curr3" class="curr3"></label>
+            </div>
+            
+        </div>
+      </div>
+     
+      <div class="partb">
+          <button type="submit" class="morn" id="mornbutton"></button>
+          <button type="submit" class="eve" id="evebutton"></button>
+      </div>
+     
+    </div>
+
+  </form>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section copyright">
+        <p>&copy; 2024 All rights reserved - TEAM SPYMUN</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+
+let d = new Date();
+
+const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+const curr = document.querySelector('.curr');
+curr.textContent = month[d.getMonth()] + " " + d.getDate();
+
+const curr1 = document.querySelector('.curr1');
+let Date1 = new Date();
+Date1.setDate(d.getDate() + 1);
+curr1.textContent = month[Date1.getMonth()] + " " + Date1.getDate();
+
+const curr2 = document.querySelector('.curr2');
+let Date2 = new Date();
+Date2.setDate(d.getDate() + 2);  // Updated to use Date1 instead of d
+curr2.textContent = month[Date2.getMonth()] + " " + Date2.getDate();
+console.log(Date2);
+
+const curr3 = document.querySelector('.curr3');
+let Date3 = new Date();
+Date3.setDate(d.getDate() + 3);  // Updated to use Date2 instead of d
+curr3.textContent = month[Date3.getMonth()] + " " + Date3.getDate();
+console.log(Date3);
+
+    /*
+    const mornbutton = document.getElementById('mornbutton');
+    const evebutton = document.getElementById('evebutton');
+
+    mornbutton.addEventListener('mouseover', () => {
+        document.body.style.backgroundImage = 'url(../images/morning1.jpg)'; // Change to your desired background color
+    });
+
+    mornbutton.addEventListener('mouseout', () => {
+        document.body.style.backgroundImage = 'url(../images/default1.jpg)'; // Change back to the initial background color
+    });
+
+
+    evebutton.addEventListener('mouseover', () => {
+        document.body.style.backgroundImage = 'url(../images/evening1.jpg)'; // Change to your desired background color
+    });
+
+    evebutton.addEventListener('mouseout', () => {
+        document.body.style.backgroundImage = 'url(../images/default1.jpg)'; // Change back to the initial background color
+    });
+    */
+  </script>
+
+</body>
+</html>

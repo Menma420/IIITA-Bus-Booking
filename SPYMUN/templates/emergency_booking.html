@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .status {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 5rem;
+      }
+
+      .item {
+        font-size: 18px;
+        position: relative;
+        padding: 0 8% 0 2%;
+      }
+
+      .item::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -12px;
+        transform: translate(0, -50%);
+        width: 15px;
+        height: 15px;
+        background: rgb(255, 255, 255);
+        outline: 0.2mm solid rgb(120, 120, 120);
+        border-radius: 0.3mm;
+      }
+
+      .item:nth-child(2)::before {
+        background: rgb(118, 117, 117);
+        outline: none;
+      }
+      .item:nth-child(3)::before {
+        background: rgb(28, 185, 120);
+        outline: none;
+      }
+
+      /* Seat matrix */
+
+      .container {
+        display: grid;
+        grid-template-rows: repeat(5, 1fr);
+        grid-template-columns: 8rem 1fr 6rem;
+        border: 1px solid black;
+        border-radius: 8px;
+        height: 18rem;
+        width: 50%;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        background-color: rgb(164, 164, 164);
+        padding: 1rem 1rem 1rem 1rem;
+      }
+
+      .container::before {
+        content: "";
+        position: absolute;
+        bottom: 15%;
+        left: -1%;
+        height: 14rem;
+        width: 7px;
+        background: rgb(141, 198, 255);
+        border-radius: 3mm 0 0 3mm;
+        border-top: 0.3mm solid rgb(180, 180, 180);
+      }
+
+      .row1 {
+        grid-row-start: 1; /* Align row1 at the first row of the grid */
+      }
+
+      .row2 {
+        grid-row-start: 2; /* Align row2 at the second row of the grid */
+      }
+
+      .row3 {
+        grid-row-start: 3; /* Align row3 at the third row of the grid */
+        height: 58px;
+      }
+
+      .row4 {
+        grid-row-start: 4; /* Align row4 at the fourth row of the grid */
+      }
+
+      .row5 {
+        grid-row-start: 5; /* Align row5 at the fifth row of the grid */
+      }
+
+      .lastrow {
+        grid-column-start: 3; /* Align row6 at the last of the grid */
+        display: flex;
+        flex-direction: column;
+        width: 3rem;
+      }
+
+      .all-seats {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .seat {
+        display: block;
+        width: 30px;
+        height: 45px;
+        border: 1px solid black;
+        margin: 5px;
+        background-color: #fff;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      input[type="radio"]:checked + label {
+        background-color: rgb(
+          28,
+          185,
+          120
+        ); /* Change background color for selected seat */
+      }
+
+      .submit {
+        text-align: center;
+        margin-top: 20px;
+        width: 99.9%; /* Adjust width to fit within screen */
+        max-width: 100%; /* Ensure the div doesn't exceed screen width */
+        padding: 10px; /* Adjust padding as needed */
+        box-sizing: border-box; /* Include padding and border in the total width */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 6rem;
+
+        -webkit-box-shadow: 0 -6px 10px -6px #000000;
+        -moz-box-shadow: 0 -6px 10px -6px #000000;
+        box-shadow: 0 -6px 10px -6px #000000;
+      }
+
+      .submit button {
+        background-color: #04aa6d;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer; /* Add cursor style */
+        border-radius: 4px; /* Add border-radius for rounded corners */
+      }
+
+      .submit button:hover {
+        background-color: #357438; /* Darken the background color on hover */
+      }
+
+      .booked {
+        background-color: rgb(118, 117, 117);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="status">
+      <div class="item">Available</div>
+      <div class="item">Booked</div>
+      <div class="item">Selected</div>
+    </div>
+
+    <form action="/book_seat" method="post">
+      <!-- Seat matrix  -->
+      <div class="container">
+        <img src="../static/images/wheel.png" alt="" />
+        <div class="seats">
+          <div class="all-seats row1">
+            <input type="radio" name="seat" id="a1" value="1" disabled />
+            <label for="a1" class="{{ seat1 }}"></label>
+
+            <input type="radio" name="seat" id="a2" value="2" disabled />
+            <label for="a2" class="{{ seat2 }}"></label>
+
+            <input type="radio" name="seat" id="a3" value="3" disabled />
+            <label for="a3" class="{{ seat3 }}"></label>
+
+            <input type="radio" name="seat" id="a4" value="4" disabled />
+            <label for="a4" class="{{ seat4 }}"></label>
+
+            <input type="radio" name="seat" id="a5" value="5" disabled />
+            <label for="a5" class="{{ seat5 }}"></label>
+
+            <input type="radio" name="seat" id="a6" value="6" disabled />
+            <label for="a6" class="{{ seat6 }}"></label>
+
+            <input type="radio" name="seat" id="a7" value="7" disabled />
+            <label for="a7" class="{{ seat7 }}"></label>
+
+            <input type="radio" name="seat" id="a8" value="8" disabled />
+            <label for="a8" class="{{ seat8 }}"></label>
+          </div>
+
+          <div class="all-seats row2">
+            <input type="radio" name="seat" id="b1" value="9" disabled />
+            <label for="b1" class="{{ seat9 }}"></label>
+
+            <input type="radio" name="seat" id="b2" value="10" disabled />
+            <label for="b2" class="{{ seat10 }}"></label>
+
+            <input type="radio" name="seat" id="b3" value="11" disabled />
+            <label for="b3" class="{{ seat11 }}"></label>
+
+            <input type="radio" name="seat" id="b4" value="12" disabled />
+            <label for="b4" class="{{ seat12 }}"></label>
+
+            <input type="radio" name="seat" id="b5" value="13" disabled />
+            <label for="b5" class="{{ seat13 }}"></label>
+
+            <input type="radio" name="seat" id="b6" value="14" disabled />
+            <label for="b6" class="{{ seat14 }}"></label>
+
+            <input type="radio" name="seat" id="b7" value="15" disabled />
+            <label for="b7" class="{{ seat15 }}"></label>
+
+            <input type="radio" name="seat" id="b8" value="16" disabled />
+            <label for="b8" class="{{ seat16 }}"></label>
+          </div>
+
+          <div class="row3"></div>
+
+          <div class="all-seats row4">
+            <input type="radio" name="seat" id="c1" value="17" disabled />
+            <label for="c1" class="{{ seat17 }}"></label>
+
+            <input type="radio" name="seat" id="c2" value="18" disabled />
+            <label for="c2" class="{{ seat18 }}"></label>
+
+            <input type="radio" name="seat" id="c3" value="19" disabled />
+            <label for="c3" class="{{ seat19 }}"></label>
+
+            <input type="radio" name="seat" id="c4" value="20" disabled />
+            <label for="c4" class="{{ seat20 }}"></label>
+
+            <input type="radio" name="seat" id="c5" value="21" disabled />
+            <label for="c5" class="{{ seat21 }}"></label>
+
+            <input type="radio" name="seat" id="c6" value="22" disabled />
+            <label for="c6" class="{{ seat22 }}"></label>
+
+            <input type="radio" name="seat" id="c7" value="23" disabled />
+            <label for="c7" class="{{ seat23 }}"></label>
+
+            <input type="radio" name="seat" id="c8" value="24" disabled />
+            <label for="c8" class="{{ seat24 }}"></label>
+
+            <input type="radio" name="seat" id="c9" value="25" disabled />
+            <label for="c9" class="{{ seat25 }}"></label>
+          </div>
+
+          <div class="all-seats row5">
+            <input type="radio" name="seat" id="d1" value="26" disabled />
+            <label for="d1" class="{{ seat26 }}"></label>
+
+            <input type="radio" name="seat" id="d2" value="27" disabled />
+            <label for="d2" class="{{ seat27 }}"></label>
+
+            <input type="radio" name="seat" id="d3" value="28" disabled />
+            <label for="d3" class="{{ seat28 }}"></label>
+
+            <input type="radio" name="seat" id="d4" value="29" disabled />
+            <label for="d4" class="{{ seat29 }}"></label>
+
+            <input type="radio" name="seat" id="d5" value="30" disabled />
+            <label for="d5" class="{{ seat30 }}"></label>
+
+            <input type="radio" name="seat" id="d6" value="31" disabled />
+            <label for="d6" class="{{ seat31 }}"></label>
+
+            <input type="radio" name="seat" id="d7" value="32" disabled />
+            <label for="d7" class="{{ seat32 }}"></label>
+
+            <input type="radio" name="seat" id="d8" value="33" disabled />
+            <label for="d8" class="{{ seat33 }}"></label>
+
+            <input type="radio" name="seat" id="d9" value="34" disabled />
+            <label for="d9" class="{{ seat34 }}"></label>
+          </div>
+        </div>
+
+        <div class="all-seats lastrow">
+          <ul>
+            {% for seat in available_seats %}
+            <li>
+              <input
+                type="radio"
+                name="seat"
+                id="{{ seat }}"
+                value="{{ seat }}"
+              />
+              <label for="{{ seat }}" class="seat"></label>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="submit">
+        <button type="submit" value="Book Seat">Confirm</button>
+      </div>
+    </form>
+  </body>
+</html>

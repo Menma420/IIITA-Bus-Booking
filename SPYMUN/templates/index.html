@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>IIITA Bus Login Form</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+  margin: 0;
+  padding: 0;
+  background-image: url("static/images/invert.png") ;
+  background-size: cover;
+  /* background: linear-gradient(180deg,#5eb5f3, #e7c12d); */
+  height: 100vh;
+  overflow:hidden;
+  animation: rep 10s linear infinite;
+  animation-direction: reverse;
+  transition: 0.02s ease-in-out;
+}
+@keyframes rep {
+  100% {
+      background-position: 300px 0;
+  }
+}
+.center{
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  height:420px;
+  border-radius: 10px;
+box-shadow: 10px 10px 25px rgb(1, 1, 1);
+}
+.center h1{
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid silver;
+  font-size: 110%;
+}
+ h5{
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid silver;
+  font-size: 90%;
+}
+.center form{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+form .txt_field{
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+.txt_field input{
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+.txt_field label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+.txt_field span::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #2691d9;
+  transition: .5s;
+}
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label{
+  top: -5px;
+  color: #2691d9;
+}
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before{
+  width: 100%;
+}
+.pass{
+  margin: -5px 0 20px 5px;
+  color: #a6a6a6;
+  cursor: pointer;
+}
+.pass:hover{
+  text-decoration: underline;
+}
+input[type="submit"]{
+  width: 100%;
+  height: 50px;
+  border: 1px solid;
+  background: #ebd912;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #01070a;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+input[type="submit"]:hover{
+  /* border-color: #139efba2; */
+  background: #92C7CF;
+  transition: .5s;
+}
+.signup_link{
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
+}
+.signup_link a{
+  color: #6e7110;
+  text-decoration: none;
+}
+.signup_link a:hover{
+  text-decoration: underline;
+}
+
+
+/* .road{
+  margin-top: 2px;
+  background-color: #01070a;
+  position: absolute;
+  top: 54%;
+  height: 160px;
+  width: 100%;
+  
+} */
+
+#road1{
+  width: 100%;
+
+}
+
+.bus1{
+  position: relative;
+  top: 12rem;
+  left: 5rem;
+}
+
+.bus2{
+  position: relative;
+  top: 50px;
+  left: 480px;
+}
+
+
+#bus1{
+  height: 205px;
+}
+
+#bus2{
+  height: 205px;
+}
+
+.road {
+  position: relative;
+  top: 60%;
+  height: 137px;
+  background: url("static/images/Bus_Banner01.png");
+  background-position: 0 0;
+  animation: rep 10s linear infinite;
+  animation-direction: reverse;
+}
+@keyframes rep {
+  100% {
+      background-position: 300px 0;
+  }
+}
+
+
+/* Styling for the footer */
+footer {
+  background: #333;
+  font-size: 12px;
+  color: #fff;
+  padding: 2px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  
+}
+
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.footer-section {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-section a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.footer-section p{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .center {
+    width: 80%;
+  }
+}
+
+
+/* Menu btn */
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* SVG styling */
+.menu-btn svg {
+  width: 30px;
+  height: 30px;
+  fill: #333; /* Initial color */
+  transition: fill 0.3s ease, transform 0.3s ease;
+}
+
+.menu-btn.clicked svg {
+  fill: #007bff; /* Color on click */
+  transform: rotate(90deg); /* Rotate the button on click */
+}
+
+.menu-btn.animate {
+  animation: bounce 0.3s ease; /* Add a bounce animation */
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.menu-options {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  display: none;
+  z-index: 999;
+  height: 200px;
+  width: 8%;
+  opacity: 0.7;
+}
+
+.menu-options a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  padding: 5px 0;
+}
+
+.menu-options.show {
+  display: block;
+}
+
+p{
+  text-align: center;
+  font-weight: bold;
+  color: tomato;
+}
+
+    </style>
+
+    
+  </head>
+  <body>
+    <div class="road">
+
+    </div>
+    <div class="bus1">
+      <img src="static/images/bus.png" alt="" id="bus1">
+    </div>
+
+    <div class="bus2">
+      <img src="static/images/bus.png" alt="" id="bus2">
+    </div> 
+
+    <div class="center">
+      <h1>IIIT-A BUS BOOKING<br>LDAP LOGIN</h1>
+      <form action="{{ url_for('login')}}" method="post">
+        <div class="txt_field">
+          <input type="text" required name="Enrollmentno">
+          <span></span>
+          <label>Enrollment Number</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" required name="password">
+          <span></span>
+          <label>Password</label>
+        </div>
+        <input type="submit" value="Login">
+      </form>
+      <p></p>
+      <p>{{ error_message }}</p>
+    </div>
+
+    <!-- Menu Button -->
+    <div class="menu-btn" onclick="toggleMenu()">
+      <!-- SVG for the menu button -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </div>
+
+    <!-- Menu Options -->
+    <div class="menu-options">
+      <a href="#">Home</a>
+      <a href="CommunityForum.html">Community Forum</a>
+      <a href="AboutUs.html">About Us</a>
+      
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section copyright">
+          <p style="color: white;">&copy; 2024 All rights reserved - TEAM SPYMUN</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMenu() {
+        var menuOptions = document.querySelector('.menu-options');
+        menuOptions.classList.toggle('show');
+        
+        // Change color and add animation on click
+        var menuBtn = document.querySelector('.menu-btn');
+        menuBtn.classList.toggle('clicked');
+        menuBtn.classList.toggle('animate');
+        
+        // Reset animation after a short delay
+        setTimeout(() => {
+          menuBtn.classList.remove('animate');
+        }, 300);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Forum</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        section {
+            margin-top: 20px;
+        }
+        article {
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        form {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Community Forum</h1>
+    </header>
+
+    <section>
+        {% for post in posts %}
+            <article>
+                <h2>{{ post[1] }}</h2>
+                <p>{{ post[2] }}</p>
+                <small>Posted on {{ post[3] }}</small>
+            </article>
+        {% endfor %}
+    </section>
+
+    <form action="/submit" method="post">
+        <h2>Create a Text Post</h2>
+        <label for="postTitle">Title:</label>
+        <input type="text" id="postTitle" name="postTitle" required>
+        <br>
+        <label for="postContent">Content:</label>
+        <textarea id="postContent" name="postContent" rows="4" required></textarea>
+        <br>
+        <button type="submit">Submit Post</button>
+    </form>
+
+    <footer>
+        <p>&copy; 2024 Community Forum</p>
+    </footer>
+
+</body>
+</html>
