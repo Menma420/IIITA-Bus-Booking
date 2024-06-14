@@ -10,44 +10,6 @@ A web application for booking buses at IIIT Allahabad. This system allows studen
 - View your Bookings
 - Responsive Design
 
-## Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/Menma420/IIITA-Bus-Booking.git
-   ```
-2. **Navigate to the project directory:**
-   ```bash
-   cd IIITA-Bus-Booking
-   ```
-3. **Set up the virtual environment:**
-   ```bash
-   python -m venv venv
-   ```
-4. **Activate the virtual environment:**
-   - On Windows:
-     ```bash
-     venv\Scripts\activate
-     ```
-   - On macOS/Linux:
-     ```bash
-     source venv/bin/activate
-     ```
-5. **Install the dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-6. **Set up the database:**
-   - Configure the database settings in `config.py`.
-   - Apply migrations:
-     ```bash
-     flask db upgrade
-     ```
-7. **Run the application:**
-   ```bash
-   flask run
-   ```
-
 ## Usage
 
 1. **Sign Up / Login:**
@@ -69,22 +31,8 @@ A web application for booking buses at IIIT Allahabad. This system allows studen
 - **Database:** MySQL
 - **Version Control:** Git
 
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Make your changes.
-4. Commit your changes (`git commit -m 'Add some feature'`).
-5. Push to the branch (`git push origin feature-branch`).
-6. Open a pull request.
-
-
 ## Contact
 
 If you have any questions or suggestions, feel free to contact me at [uttkarshmalviya90@gmail.com](mailto:uttkarshmalviya90@gmail.com).
 
 ---
-
-Feel free to modify the template to better suit your project.
